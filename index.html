@@ -1,41 +1,89 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>تضحك لمن تقع 🤣🤣🤣</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>تضحك لمن تقع 🤣</title>
 
 <style>
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #ffdf80, #ffb6c1);
+  margin: 0;
+  padding: 20px;
+  font-family: Tahoma, Arial, sans-serif;
   text-align: center;
-  padding: 20px;
-}
-.container {
-  max-width: 600px;
-  margin: 30px auto;
-  background: white;
-  padding: 25px;
-  border-radius: 25px;
-}
-h1 { color: #e91e63; }
-.joke {
-  background: #fff3cd;
-  padding: 20px;
-  border-radius: 15px;
-  font-size: 21px;
-  line-height: 1.8;
-  margin: 25px 0;
-}
-button {
-  background: #e91e63;
   color: white;
+  background: linear-gradient(135deg, #241044, #7928ca, #ff4d8d);
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 650px;
+  margin: 25px auto;
+  padding: 25px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 25px;
+  box-shadow: 0 12px 35px #0003;
+}
+
+h1 {
+  font-size: 34px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 17px;
+  color: #ffe3f1;
+}
+
+.counter {
+  margin: 20px 0;
+  color: #ffe3f1;
+}
+
+.joke {
+  background: #fff;
+  color: #39204e;
+  padding: 25px 18px;
+  border-radius: 20px;
+  font-size: 21px;
+  line-height: 2;
+  min-height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 22px 0;
+  overflow-wrap: anywhere;
+}
+
+button {
   border: none;
-  padding: 15px 25px;
-  border-radius: 12px;
-  font-size: 18px;
+  border-radius: 14px;
+  padding: 14px 18px;
+  margin: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  background: #ffe36e;
+  color: #38204b;
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
+.secondary {
+  background: white;
+}
+
+footer {
+  margin-top: 25px;
+  color: #ffe3f1;
+  font-size: 14px;
 }
 </style>
 </head>
@@ -43,38 +91,124 @@ button {
 <body>
 <div class="container">
 
-<h1>😂 تضحك لمن تقع 🤣🤣🤣</h1>
-<p>أهلاً بيك في عالم الضحك السوداني 🇸🇩</p>
-
-<div class="joke" id="joke">
-واحد مشى للدكتور وقال ليه:
-يا دكتور، كل ما أشرب شاي عيني بتوجعني!
-الدكتور قال ليه: جرّبت تطلع الملعقة من الكباية؟ 😂
+<h1>🤣 تضحك لمن تقع 🤣</h1>
+<div class="subtitle">
+أهلاً بيك يا زول! 🇸🇩<br>
+جهّز نفسك للضحك 😂
 </div>
 
-<button onclick="nextJoke()">هات نكتة تانية 🤣</button>
+<div class="counter" id="counter">
+نكت سودانية متنوعة
+</div>
 
-<p>اضحك يا زول، الدنيا ماشة 😂❤️</p>
+<div class="joke" id="joke">
+اضغط على الزر وخلينا نضحك! 😂
+</div>
+
+<button onclick="newJoke()">
+🎲 نكتة جديدة
+</button>
+
+<br>
+
+<button class="secondary" onclick="copyJoke()">
+📋 انسخ النكتة
+</button>
+
+<button class="secondary" onclick="shareJoke()">
+📲 شارك النكتة
+</button>
+
+<footer>
+صُنع بحب لعشاق الضحك السوداني ❤️🇸🇩<br>
+تضحك لمن تقع 🤣🤣🤣
+</footer>
 
 </div>
 
 <script>
 const jokes = [
-"واحد مشى للدكتور وقال ليه: كل ما أشرب شاي عيني بتوجعني! قال ليه: طلع الملعقة من الكباية 😂",
-"الأستاذ سأل الطالب: ليه جيت متأخر؟ قال ليه: كنت بحلم إني مسافر والطائرة اتأخرت 🤣",
+"واحد مشى للدكتور قال ليه: يا دكتور، كل ما أشرب شاي عيني بتوجعني! قال ليه: جرّبت تطلع الملعقة من الكباية؟ 😂",
+"الأستاذ قال للطالب: ليه جيت متأخر؟ قال ليه: يا أستاذ، الطريق كان طويل! قال ليه: لكن بيتك قريب! قال: أيوة، عشان كده جيت مشي 🤣",
 "واحد قال لصاحبه: أنا ذاكرتي قوية شديد! قال ليه: من متين؟ قال: من متين شنو؟ 😂",
-"زول اشترى ساعة ضد الموية، قام مشى البحر ورجع الساعة براها 🤣🤣",
-"واحد قال للدكتور: أنا بنسى شديد! الدكتور قال ليه: من متين؟ قال: من متين شنو؟ 😂😂",
-"واحد نام متأخر، قام الصباح لقى نفسو لسه نايم 🤣",
-"زول سألوه: بتعرف تعوم؟ قال: أيوة، لكن الموية ما بتعرفني 😂"
+"زول اشترى ساعة ضد الموية، قام مشى البحر ورجع الساعة براها 🤣",
+"الأستاذ سأل الطالب: وين تقع الصين؟ قال: في الكتاب يا أستاذ! 😂",
+"واحد نام متأخر، قام الصباح لقى نفسو لسه نعسان 🤣",
+"زول سألوه: بتعرف تعوم؟ قال: أيوة، لكن الموية ما بتعرفني 😂",
+"واحد دخل الامتحان وكتب اسمو وطلع. سألوه ليه؟ قال: حضرت عشان أتأكد إني في اللجنة الصحيحة 🤣",
+"واحد قال لصاحبه: أنا بقيت رياضي! قال ليه: بتلعب شنو؟ قال: بجري من المسؤوليات 😂",
+"الأم قالت لولدها: قوم ذاكر! قال ليها: يا أمي، العلم نور. قالت: أيوة! قال: وأنا داير أنوم في الظلام 🤣",
+"واحد مشى يشتري مخدة، قال للبائع: عندك مخدة مريحة؟ قال: أيوة. قال: طيب وريني شهادة خبرتها 😂",
+"زول فتح الثلاجة لقى اللمبة شغالة، قفلها وفتحها تاني عشان يتأكد إنها ما بتشتغل ساكت 🤣",
+"واحد سأل صاحبه: الساعة كم؟ قال ليه: ما عندي ساعة. قال: طيب موبايلك؟ قال: بطاريتو ماتت. قال: طيب إنت عايش كيف؟ 😂",
+"المدرس قال: من يقدر يقول لي جملة فيها كلمة سكر؟ الطالب قال: شربت الشاي. قال: وين السكر؟ قال: داب في الشاي يا أستاذ 🤣",
+"واحد قال لصاحبه: عندي خطة للمستقبل! قال ليه: شنو هي؟ قال: أول حاجة أنوم وأفكر فيها بكرة 😂",
+"زول سألوه: ليه بتجري؟ قال: عشان ألحق نفسي! قالوا ليه: عملت شنو؟ قال: ما عارف، لكن نفسي سبقتني 🤣",
+"واحد اشترى كتاب كيف توفر قروشك، رجعو للمكتبة عشان يوفر حق الكتاب 😂",
+"الأستاذ قال: الامتحان ساهل شديد! الطالب قال: ساهل ليك إنت يا أستاذ، إنت الكاتبو 🤣",
+"واحد قال لصاحبه: أنا ما بخاف من المستقبل. قال ليه: ليه؟ قال: لسه ما قابلتو 😂",
+"زول قال: قررت أبدأ حياة جديدة. سألوه: متين؟ قال: بعد ما أخلص النوم 🤣"
 ];
 
-let index = 0;
+let currentJoke = "";
 
-function nextJoke() {
-  index = (index + 1) % jokes.length;
-  document.getElementById("joke").innerText = jokes[index];
+function newJoke() {
+  let next;
+
+  if (jokes.length > 1) {
+    do {
+      next = Math.floor(Math.random() * jokes.length);
+    } while (jokes[next] === currentJoke);
+  } else {
+    next = 0;
+  }
+
+  currentJoke = jokes[next];
+
+  document.getElementById("joke").textContent = currentJoke;
+  document.getElementById("counter").textContent =
+    "النكتة رقم " + (next + 1) + " من " + jokes.length;
 }
+
+async function copyJoke() {
+  if (!currentJoke) {
+    alert("اضغط نكتة جديدة أولاً 😂");
+    return;
+  }
+
+  try {
+    await navigator.clipboard.writeText(currentJoke);
+    alert("تم نسخ النكتة! أرسلها لأصحابك 🤣");
+  } catch (e) {
+    const area = document.createElement("textarea");
+    area.value = currentJoke;
+    document.body.appendChild(area);
+    area.select();
+    document.execCommand("copy");
+    area.remove();
+    alert("حاول نسخ النكتة ومشاركتها 😂");
+  }
+}
+
+async function shareJoke() {
+  if (!currentJoke) {
+    alert("اضغط نكتة جديدة أولاً 😂");
+    return;
+  }
+
+  if (navigator.share) {
+    try {
+      await navigator.share({
+        title: "تضحك لمن تقع 🤣",
+        text: currentJoke
+      });
+    } catch (e) {}
+  } else {
+    await copyJoke();
+  }
+}
+
+newJoke();
 </script>
 
 </body>
