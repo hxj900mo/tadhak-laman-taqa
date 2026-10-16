@@ -1,1 +1,81 @@
 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تضحك لمن تقع 🤣🤣🤣</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ffdf80, #ffb6c1);
+  text-align: center;
+  padding: 20px;
+}
+.container {
+  max-width: 600px;
+  margin: 30px auto;
+  background: white;
+  padding: 25px;
+  border-radius: 25px;
+}
+h1 { color: #e91e63; }
+.joke {
+  background: #fff3cd;
+  padding: 20px;
+  border-radius: 15px;
+  font-size: 21px;
+  line-height: 1.8;
+  margin: 25px 0;
+}
+button {
+  background: #e91e63;
+  color: white;
+  border: none;
+  padding: 15px 25px;
+  border-radius: 12px;
+  font-size: 18px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h1>😂 تضحك لمن تقع 🤣🤣🤣</h1>
+<p>أهلاً بيك في عالم الضحك السوداني 🇸🇩</p>
+
+<div class="joke" id="joke">
+واحد مشى للدكتور وقال ليه:
+يا دكتور، كل ما أشرب شاي عيني بتوجعني!
+الدكتور قال ليه: جرّبت تطلع الملعقة من الكباية؟ 😂
+</div>
+
+<button onclick="nextJoke()">هات نكتة تانية 🤣</button>
+
+<p>اضحك يا زول، الدنيا ماشة 😂❤️</p>
+
+</div>
+
+<script>
+const jokes = [
+"واحد مشى للدكتور وقال ليه: كل ما أشرب شاي عيني بتوجعني! قال ليه: طلع الملعقة من الكباية 😂",
+"الأستاذ سأل الطالب: ليه جيت متأخر؟ قال ليه: كنت بحلم إني مسافر والطائرة اتأخرت 🤣",
+"واحد قال لصاحبه: أنا ذاكرتي قوية شديد! قال ليه: من متين؟ قال: من متين شنو؟ 😂",
+"زول اشترى ساعة ضد الموية، قام مشى البحر ورجع الساعة براها 🤣🤣",
+"واحد قال للدكتور: أنا بنسى شديد! الدكتور قال ليه: من متين؟ قال: من متين شنو؟ 😂😂",
+"واحد نام متأخر، قام الصباح لقى نفسو لسه نايم 🤣",
+"زول سألوه: بتعرف تعوم؟ قال: أيوة، لكن الموية ما بتعرفني 😂"
+];
+
+let index = 0;
+
+function nextJoke() {
+  index = (index + 1) % jokes.length;
+  document.getElementById("joke").innerText = jokes[index];
+}
+</script>
+
+</body>
+</html>
